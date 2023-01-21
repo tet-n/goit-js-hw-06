@@ -13,21 +13,31 @@ const images = [
   },
 ];
 
+// За допомогою createElement
+
+// const listref = document.querySelector('.gallery');
+// const makeImages = function ({ url, alt }) {
+//   const item = document.createElement('li');
+//   item.classList.add('gallery__item');
+//   const image = document.createElement('img');
+//   image.classList.add('gallery__img');
+//   image.src = url;
+//   image.alt = alt;
+//   item.append(image);
+//   return item;
+// };
+
+// const cards = images.map(makeImages);
+// listref.append(...cards);
+
+//За допомогою шаблонних строк
+
 const listref = document.querySelector('.gallery');
-
-const makeImages = function ({ url, alt }) {
-  const item = document.createElement('li');
-  item.classList.add('gallery__item');
-
-  const image = document.createElement('img');
-  image.classList.add('gallery__img');
-  image.src = url;
-  image.alt = alt;
-
-  item.append(image);
-  return item;
+const makeItem = function ({ url, alt }) {
+  const li = `<li class="gallery__item"><img src='${url}' alt='${alt}' class="gallety__img"></li>`;
+  return li;
 };
 
-const cards = images.map(makeImages);
-listref.append(...cards);
+const allCards = images.map(makeItem).join('');
+listref.insertAdjacentHTML('afterbegin', allCards);
 
