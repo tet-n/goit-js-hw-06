@@ -13,6 +13,17 @@ const images = [
   },
 ];
 
+//За допомогою шаблонних строк
+
+const listref = document.querySelector('.gallery');
+const makeItem = function ({ url, alt }) {
+  const li = `<li class="gallery__item"><img src='${url}' alt='${alt}' class="gallety__img"></li>`;
+  return li;
+};
+
+const allCards = images.map(makeItem).join('');
+listref.insertAdjacentHTML('afterbegin', allCards);
+
 // За допомогою createElement
 
 // const listref = document.querySelector('.gallery');
@@ -29,15 +40,3 @@ const images = [
 
 // const cards = images.map(makeImages);
 // listref.append(...cards);
-
-//За допомогою шаблонних строк
-
-const listref = document.querySelector('.gallery');
-const makeItem = function ({ url, alt }) {
-  const li = `<li class="gallery__item"><img src='${url}' alt='${alt}' class="gallety__img"></li>`;
-  return li;
-};
-
-const allCards = images.map(makeItem).join('');
-listref.insertAdjacentHTML('afterbegin', allCards);
-

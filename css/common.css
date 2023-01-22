@@ -29,10 +29,6 @@ img {
   display: block;
 }
 
-ul,
-li {
-}
-
 .gallery {
   display: flex;
   gap: 20px;
@@ -42,4 +38,6 @@ li {
 
   list-style: none;
 }
+
+/* Task 10 */
 
