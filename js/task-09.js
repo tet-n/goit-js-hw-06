@@ -9,8 +9,9 @@ const refs = {
 };
 
 const onChangeColor = function (e) {
-  refs.body.style.backgroundColor = getRandomHexColor();
-  refs.spanColor.textContent = getRandomHexColor();
+  const randomColor = getRandomHexColor();
+  refs.body.style.backgroundColor = randomColor;
+  refs.spanColor.textContent = randomColor;
 };
 
 refs.btnChangeColor.addEventListener('click', onChangeColor);

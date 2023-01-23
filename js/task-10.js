@@ -12,32 +12,31 @@ const refs = {
 const createBoxes = function (amount) {
   //Вихідні дані
   amount = refs.input.value;
-  let startAmount = 0;
-  let endAmount = 0;
+
+  let startAmount = refs.boxes.children.length;
   let div = '';
   const width = 30;
   const height = 30;
 
-  // Якщо ще не були створені елементи
-  if (refs.boxes.innerHTML === '') {
-    for (let i = 0; i < amount; i += 1) {
+  const repeatElements = function () {
+    for (let i = startAmount; i < amount; i += 1) {
       div += `<div id="box" style="width:${width + i * 10}px;height:${
         height + i * 10
       }px;background-color:${getRandomHexColor()}"></div>`;
     }
+    return div;
+  };
+
+  // Cтворюємо елементи
+  if (refs.boxes.innerHTML === '') {
+    repeatElements();
     refs.boxes.insertAdjacentHTML('afterbegin', div);
     refs.input.value = '';
 
-    // Якщо вже були створені та треба додати ще
+    // Якщо вже були створені елементи та треба додати ще
   } else {
-    startAmount = refs.boxes.children.length;
-    endAmount = startAmount + Number(amount);
-
-    for (let i = startAmount; i < endAmount; i += 1) {
-      div += `<div id="box" style="width:${width + i * 10}px;height:${
-        height + i * 10
-      }px;background-color:${getRandomHexColor()}"></div>`;
-    }
+    amount = startAmount + Number(amount);
+    repeatElements();
     refs.boxes.insertAdjacentHTML('beforeend', div);
     refs.input.value = '';
   }
