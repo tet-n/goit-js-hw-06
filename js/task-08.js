@@ -16,6 +16,7 @@ const onFormSubmit = function (e) {
       password,
     };
     console.log(formData);
+    formRef.reset();
 
     //Вивести у консоль об'єкт з даними. Метод з FormData.
     // const formData = new FormData(e.currentTarget);
